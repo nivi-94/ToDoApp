@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>HR Management</title></head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<body>
+<h2>👩‍💼 HR Management System</h2>
+
+<form method="POST">
+  <input name="name" placeholder="Employee Name" required>
+  <input name="role" placeholder="Role" required>
+  <input name="city" placeholder="City" required>
+  <button type="submit">Add Employee</button>
+</form>
+
+<h3>Employee Records</h3>
+<table border="1" cellpadding="8">
+  <tr><th>Name</th><th>Role</th><th>City</th><th>Actions</th></tr>
+  {% for emp in employees %}
+    <tr>
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.role }}</td>
+      <td>{{ emp.city }}</td>
+      <td>
+        <a href="/edit/{{ emp.id }}">Edit</a> |
+        <a href="/delete/{{ emp.id }}">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
+
